@@ -1,9 +1,8 @@
 package main
 
 import (
-	// "github.com/designerasun/myGo/caffeine/consumer"
-	"github.com/designerasun/myGo/caffeine/drink"
-	"github.com/designerasun/myGo/caffeine/journal"
+	"github.com/golang/caffeine/drink"
+	"github.com/golang/caffeine/journal"
 )
 
 // Daily caffeine intake checker: tracking how many drinks that contain
@@ -17,4 +16,5 @@ func main() {
 	// consumer.EnterInfo()
 	drink.DrinkType()
 	journal.DrawGraph()
+
 }

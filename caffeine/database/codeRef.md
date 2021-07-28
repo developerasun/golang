@@ -1,5 +1,6 @@
 
-# How to properly write sqlite3 codes in golang
+# How to properly write SQL codes in golang
+Below code is referred to cockroachdb/examples-go. Original codes you can check here: https://github.com/cockroachdb/examples-go/blob/master/photos/db.go
 
 ## Declare error in golang 
   var errNoUser = errors.New("no user found")
@@ -58,6 +59,7 @@ And there is semi-colon at the end of query.
   )
 
 ## Declare query-related function to manipulate data in golang
+Divide functions by each step of database - open, table initialization, drop, 
   // openDB opens the database connection according to the context.
   func openDB(cfg Config) (*sql.DB, error) {
     return sql.Open("postgres", cfg.DBUrl)
@@ -74,3 +76,5 @@ And there is semi-colon at the end of query.
     _, err := db.ExecContext(ctx, "DROP DATABASE IF EXISTS photos;")
     return err
   }
+
+// 
