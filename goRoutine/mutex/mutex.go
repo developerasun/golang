@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	mutex   sync.Mutex
+	// mutex   sync.Mutex
 	balance int
 )
 
@@ -17,25 +17,32 @@ func init() {
 func main() {
 
 	var wait sync.WaitGroup
-	wait.Add(2)
 
-	go func(value int) {
-		mutex.Lock()
-		balance += value
-		mutex.Unlock()
-		fmt.Printf("Current balance1: %d\n", balance)
-		wait.Done()
-	}(700)
+	for counter := 0; counter < 500000; counter++ {
 
-	go func(value int) {
-		mutex.Lock()
-		balance -= value
-		mutex.Unlock()
-		fmt.Printf("Current balance2: %d\n", balance)
-		wait.Done()
-	}(700)
+		wait.Add(2)
 
-	wait.Wait()
+		go func(value int) {
+			// mutex.Lock()
+			balance += value
+			// mutex.Unlock()
+			fmt.Printf("=========Number of try: %d=========\n", counter)
+			fmt.Printf("Current balance1: %d\n", balance)
+			wait.Done()
+		}(700)
+
+		go func(value int) {
+			// mutex.Lock()
+			balance -= value
+			// mutex.Unlock()
+			fmt.Printf("=========Number of try: %d=========\n", counter)
+			fmt.Printf("Current balance2: %d\n", balance)
+			wait.Done()
+		}(700)
+
+		wait.Wait()
+	}
+
 	fmt.Printf("Latest balance: %d", balance)
 
 }
