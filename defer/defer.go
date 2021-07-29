@@ -1,26 +1,17 @@
 package main
 
-import "fmt"
-
-func hello() {
-	fmt.Println("hello")
-}
-
-func world() {
-	fmt.Println("world")
-}
+import (
+	"github.com/designerasun/golang/defer/timetravel"
+)
 
 func main() {
-	// var a, b int = 10, 0
-	// defer fmt.Println("done")
 
-	// result := a / b
-	// fmt.Println(result)
+	var MyController timetravel.RemoteControl
+	var Jonghyun timetravel.Person
+	MyController = Jonghyun
 
-	defer world()
-	hello()
+	MyController.Press().CheckState()
+	MyController.Press().Break()
+	MyController.Press().InitTimeMachine()
 
-	for i := 0; i < 3; i++ {
-		defer fmt.Println(i)
-	}
 }
