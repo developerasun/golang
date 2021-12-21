@@ -21,7 +21,7 @@ func NewMagicStore(nm string) *magicStore {
 
 func main() {
 	IntStore := NewMagicStore("Integer Store")
-	IntStore.SetValue(4)
+	IntStore.SetValue(4.2)
 	if v, ok := IntStore.GetValue().(float64); ok {
 		v += 100
 		fmt.Println(v)
